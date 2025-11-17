@@ -1,0 +1,181 @@
+/* File: public/assets/css/custom.css (atau file CSS utama lainnya) */
+
+/* 1. Default Theme (Light Mode) */
+:root {
+    --bg-color: #ffffff; /* Latar belakang utama */
+    --text-color: #212529; /* Teks utama */
+    --card-bg-color: #ffffff; /* Latar belakang card/box */
+    --header-bg-color: #f8f9fa; /* Latar header (Bootstrap light) */
+    --footer-bg-color: #212529; /* Latar footer (Bootstrap dark) */
+    --footer-text-color: rgba(255, 255, 255, 0.5); /* Teks di footer */
+    --primary-color: #0d6efd; /* Warna utama (Bootstrap primary) */
+    --link-color: #0d6efd;
+    --border-color: #dee2e6; /* Warna border */
+
+    /* Warna spesifik AdminLTE (jika diperlukan untuk override) */
+    --adminlte-body-bg: #f4f6f9;
+    --adminlte-main-header-bg: #ffffff;
+    --adminlte-main-sidebar-bg: #ffffff;
+    --adminlte-card-bg: #ffffff;
+    --adminlte-text: #495057;
+}
+
+/* 3. Terapkan Variables ke Elemen Dasar */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transisi halus */
+}
+
+a {
+    color: var(--link-color);
+}
+
+.card {
+    background-color: var(--card-bg-color);
+    border-color: var(--border-color);
+    color: var(--text-color); /* Pastikan teks di card ikut berubah */
+}
+.card-header, .card-footer {
+     border-color: var(--border-color);
+}
+.table {
+     color: var(--text-color);
+     border-color: var(--border-color);
+}
+.table-bordered>:not(caption)>*>* {
+    border-color: inherit; /* Biar border tabel ikut */
+}
+.form-control, .form-select {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+.form-control:focus, .form-select:focus {
+     background-color: var(--bg-color);
+     color: var(--text-color);
+}
+.list-group-item {
+     background-color: var(--card-bg-color);
+     border-color: var(--border-color);
+}
+
+/* Header & Footer */
+header.border-bottom { /* Target header frontend */
+    background-color: var(--header-bg-color) !important; /* !important mungkin perlu jika ada inline style */
+    border-color: var(--border-color) !important;
+}
+header.border-bottom .nav-link, header.border-bottom .fs-4 {
+    color: var(--text-color) !important;
+}
+footer.bg-dark { /* Target footer frontend */
+    background-color: var(--footer-bg-color) !important;
+}
+footer.bg-dark h5 {
+    color: #fff; /* Biar judul footer tetap putih */
+}
+footer.bg-dark .text-white-50, footer.bg-dark small {
+     color: var(--footer-text-color) !important;
+}
+footer.bg-dark .border-top {
+    border-color: var(--border-color) !important;
+}
+
+/* CSS Khusus untuk AdminLTE (Harus lebih spesifik) */
+body.dark-mode { /* AdminLTE mungkin pakai class 'dark-mode' di body */
+    background-color: var(--adminlte-body-bg) !important;
+    color: var(--adminlte-text) !important;
+}
+
+/* Styling untuk Slider Toggle (bisa ditaruh di sini juga) */
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Jarak antara ikon dan slider */
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 24px; /* Tinggi slider */
+  position: relative;
+  width: 48px; /* Lebar slider */
+}
+
+.theme-switch input {
+  display: none; /* Sembunyikan checkbox asli */
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+  border-radius: 24px; /* Bikin ujungnya bulat */
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 3px; /* Posisi knob */
+  content: "";
+  height: 18px; /* Ukuran knob */
+  left: 3px; /* Posisi knob */
+  position: absolute;
+  transition: .4s;
+  width: 18px; /* Ukuran knob */
+  border-radius: 50%; /* Bikin knob bulat */
+}
+
+input:checked + .slider {
+  background-color: var(--primary-color); /* Warna slider pas aktif (dark mode) */
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px); /* Gerakin knob ke kanan */
+}
+
+/* Opsional: Ikon matahari dan bulan */
+.theme-switch-wrapper .bi-sun-fill,
+.theme-switch-wrapper .bi-moon-fill {
+    font-size: 1.1rem; /* Ukuran ikon */
+    color: var(--text-color); /* Warna ikon ikut tema */
+}
+
+/* Styling Tombol Scroll */
+.scroll-btn {
+  display: none; /* Sembunyi secara default */
+  position: fixed; /* Tetap di layar saat scroll */
+  right: 20px; /* Jarak dari kanan */
+  z-index: 99; /* Muncul di atas elemen lain */
+  border: none;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.5); /* Background semi-transparan */
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%; /* Bikin bulat */
+  font-size: 24px; /* Ukuran ikon */
+  line-height: 1;
+  transition: background-color 0.3s ease;
+}
+
+.scroll-btn:hover {
+  background-color: rgba(0, 0, 0, 0.7); /* Background lebih gelap saat hover */
+  color: white; /* Pastikan ikon tetap putih */
+}
+
+#scrollTopBtn {
+  bottom: 70px; /* Posisi tombol Atas */
+}
+
+#scrollBottomBtn {
+  bottom: 20px; /* Posisi tombol Bawah */
+}
+
+/* Biar smooth scroll jalan di semua browser */
+html {
+  scroll-behavior: smooth;
+}
